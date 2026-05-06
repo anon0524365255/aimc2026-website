@@ -1,12 +1,10 @@
 ---
-#
-# By default, content added below the "---" mark will appear in the home page
-# between the top bar and the list of recent posts.
-# To change the home page layout, edit the _layouts/home.html file.
-# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-#
-layout: post
+layout: portfolio
 title: "Mind the Trap: Supporting Musical Practice through Collaborative Design"
+subtitle: "Annotated portfolio — accompanying the AIMC 2026 submission"
+permalink: /
 ---
 
-Website accompanying the AIMC 2026 submission. To Be Completed
+This portfolio presents the ten tracks recorded as part of the research project,
+each paired with a short reflection from the performer(s). Select a track to
+watch the performance and read the accompanying note.

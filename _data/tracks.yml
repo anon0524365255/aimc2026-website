@@ -1,0 +1,134 @@
+# Annotated portfolio tracks
+#
+# Each entry drives one track in the homepage portfolio.
+#
+# Fields:
+#   number       - track number (1-10)
+#   title        - track title
+#   performers   - anonymised performer labels, e.g. "Musician A, Musician B"
+#   duration     - human-readable duration, e.g. "4:21" (optional)
+#   stream_uid   - Cloudflare Stream video UID
+#                  (the long hex string from the Stream dashboard, NOT the full URL)
+#   reflection   - musicians' reflection. Markdown. Use blank lines for paragraphs.
+#                  Anonymise (Musician A, B, …) before pasting in.
+#   technical    - technical details / metadata. Markdown. Renders as a separate
+#                  collapsed disclosure on the page. Bullets, prose, or kramdown
+#                  definition lists all work. Examples below.
+#
+# Tip on technical details: keep them generic enough not to deanonymise the
+# submission (avoid product names, venue names, or distinctive lab hardware
+# that would identify the team during blind review).
+
+- number: 1
+  title: "Track One — Working Title"
+  performers: "Musician A"
+  duration: "0:00"
+  stream_uid: "REPLACE_WITH_CLOUDFLARE_STREAM_UID"
+  reflection: |-
+    Replace this with the musician's reflection on the performance.
+
+    Multiple paragraphs are supported — leave a blank line between them.
+  technical: |-
+    - **Instrument:** Augmented percussion with surface-contact sensors
+    - **Synthesis:** Real-time granular processing of the live signal
+    - **Mapping:** Contact pressure → grain density; stick velocity → pitch
+    - **Recording:** Single-mic close placement, room treated for low reverb
+    - **Structure:** Free-tempo, three sections, ~4 minutes
+
+- number: 2
+  title: "Track Two — Working Title"
+  performers: "Musician B"
+  duration: "0:00"
+  stream_uid: "REPLACE_WITH_CLOUDFLARE_STREAM_UID"
+  reflection: |-
+    Reflection placeholder for track two.
+  technical: |-
+    Replace with technical details. Markdown is supported — use bullets,
+    short paragraphs, or a kramdown definition list:
+
+    Instrument
+    : What the performer played, sensors, augmentations
+    Synthesis
+    : DSP / software / signal flow
+    Mapping
+    : How input modalities drive sound
+
+- number: 3
+  title: "Track Three — Working Title"
+  performers: "Musician A, Musician B"
+  duration: "0:00"
+  stream_uid: "REPLACE_WITH_CLOUDFLARE_STREAM_UID"
+  reflection: |-
+    Reflection placeholder for track three.
+  technical: |-
+    Technical details placeholder.
+
+- number: 4
+  title: "Track Four — Working Title"
+  performers: "Musician C"
+  duration: "0:00"
+  stream_uid: "REPLACE_WITH_CLOUDFLARE_STREAM_UID"
+  reflection: |-
+    Reflection placeholder for track four.
+  technical: |-
+    Technical details placeholder.
+
+- number: 5
+  title: "Track Five — Working Title"
+  performers: "Musician C, Musician D"
+  duration: "0:00"
+  stream_uid: "REPLACE_WITH_CLOUDFLARE_STREAM_UID"
+  reflection: |-
+    Reflection placeholder for track five.
+  technical: |-
+    Technical details placeholder.
+
+- number: 6
+  title: "Track Six — Working Title"
+  performers: "Musician A"
+  duration: "0:00"
+  stream_uid: "REPLACE_WITH_CLOUDFLARE_STREAM_UID"
+  reflection: |-
+    Reflection placeholder for track six.
+  technical: |-
+    Technical details placeholder.
+
+- number: 7
+  title: "Track Seven — Working Title"
+  performers: "Musician B, Musician C"
+  duration: "0:00"
+  stream_uid: "REPLACE_WITH_CLOUDFLARE_STREAM_UID"
+  reflection: |-
+    Reflection placeholder for track seven.
+  technical: |-
+    Technical details placeholder.
+
+- number: 8
+  title: "Track Eight — Working Title"
+  performers: "Musician D"
+  duration: "0:00"
+  stream_uid: "REPLACE_WITH_CLOUDFLARE_STREAM_UID"
+  reflection: |-
+    Reflection placeholder for track eight.
+  technical: |-
+    Technical details placeholder.
+
+- number: 9
+  title: "Track Nine — Working Title"
+  performers: "Musician A, Musician C"
+  duration: "0:00"
+  stream_uid: "REPLACE_WITH_CLOUDFLARE_STREAM_UID"
+  reflection: |-
+    Reflection placeholder for track nine.
+  technical: |-
+    Technical details placeholder.
+
+- number: 10
+  title: "Track Ten — Working Title"
+  performers: "Ensemble"
+  duration: "0:00"
+  stream_uid: "REPLACE_WITH_CLOUDFLARE_STREAM_UID"
+  reflection: |-
+    Reflection placeholder for the closing track.
+  technical: |-
+    Technical details placeholder.

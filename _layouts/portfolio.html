@@ -1,0 +1,125 @@
+---
+layout: base
+---
+{%- assign tracks = site.data.tracks -%}
+<article class="portfolio">
+
+  <header class="portfolio-header">
+    <p class="portfolio-eyebrow">Annotated Portfolio<span aria-hidden="true"> — </span><span>AIMC 2026</span></p>
+    <h1 class="portfolio-title">{{ page.title | escape }}</h1>
+    {%- if page.subtitle and page.subtitle != "" %}
+      <p class="portfolio-subtitle">{{ page.subtitle }}</p>
+    {%- endif %}
+    {%- if content and content != "" %}
+      <div class="portfolio-intro">
+        {{ content }}
+      </div>
+    {%- endif %}
+
+    {%- if tracks and tracks.size > 0 -%}
+    <nav class="portfolio-toc" aria-label="Track index">
+      <p class="portfolio-toc-label">Tracks</p>
+      <ol class="portfolio-toc-list" role="list">
+        {%- for track in tracks -%}
+        <li>
+          <a href="#track-{{ track.number }}">
+            <span class="portfolio-toc-num">{{ track.number | prepend: '00' | slice: -2, 2 }}</span>
+            <span class="portfolio-toc-name">{{ track.title | escape }}</span>
+          </a>
+        </li>
+        {%- endfor -%}
+      </ol>
+    </nav>
+    {%- endif -%}
+  </header>
+
+  {%- if tracks and tracks.size > 0 -%}
+  <section class="portfolio-tracks" aria-label="Annotated album">
+
+    {%- for track in tracks -%}
+    <article class="track" id="track-{{ track.number }}">
+
+      <header class="track-header">
+        <p class="track-caption">
+          <span class="track-caption-num">Track {{ track.number | prepend: '00' | slice: -2, 2 }}</span>
+          {%- if track.duration and track.duration != "" and track.duration != "0:00" %}
+            <span class="track-caption-sep" aria-hidden="true">·</span>
+            <span class="track-caption-time">{{ track.duration }}</span>
+          {%- endif %}
+        </p>
+        <h2 class="track-title">{{ track.title | escape }}</h2>
+        {%- if track.performers and track.performers != "" %}
+          <p class="track-performers">{{ track.performers | escape }}</p>
+        {%- endif %}
+      </header>
+
+      <div class="track-video">
+        <div class="track-video-frame">
+          <iframe
+            src="https://iframe.videodelivery.net/{{ track.stream_uid }}?poster=&autoplay=false"
+            loading="lazy"
+            allow="accelerometer; gyroscope; encrypted-media; picture-in-picture;"
+            allowfullscreen
+            title="{{ track.title | escape }}"></iframe>
+        </div>
+      </div>
+
+      {%- if track.reflection and track.reflection != "" or track.technical and track.technical != "" -%}
+      <div class="track-content">
+
+        {%- if track.reflection and track.reflection != "" -%}
+        <details class="track-disclosure" open>
+          <summary>
+            <span class="track-disclosure-label">Reflection</span>
+            <span class="track-disclosure-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="track-disclosure-body">
+            {{ track.reflection | markdownify }}
+          </div>
+        </details>
+        {%- endif -%}
+
+        {%- if track.technical and track.technical != "" -%}
+        <details class="track-disclosure">
+          <summary>
+            <span class="track-disclosure-label">Technical details</span>
+            <span class="track-disclosure-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="track-disclosure-body">
+            {{ track.technical | markdownify }}
+          </div>
+        </details>
+        {%- endif -%}
+
+      </div>
+      {%- endif -%}
+
+    </article>
+
+    {%- unless forloop.last -%}
+    <hr class="track-divider" aria-hidden="true">
+    <div class="track-rest" aria-hidden="true">
+      {%- comment -%}
+        Small "rest" mark — three short ticks and a dot, echoing the AIL
+        brand's tasteful music-symbol dividers. Pure SVG, accent-green.
+      {%- endcomment -%}
+      <svg viewBox="0 0 64 16" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
+        <line x1="6"  y1="8" x2="14" y2="8" stroke="currentColor" stroke-width="2"/>
+        <line x1="20" y1="8" x2="28" y2="8" stroke="currentColor" stroke-width="2"/>
+        <line x1="34" y1="8" x2="42" y2="8" stroke="currentColor" stroke-width="2"/>
+        <circle cx="52" cy="8" r="2" fill="currentColor"/>
+      </svg>
+    </div>
+    {%- endunless -%}
+
+    {%- endfor -%}
+
+  </section>
+
+  {%- else -%}
+  <p class="portfolio-empty">
+    No tracks found. Add entries to <code>_data/tracks.yml</code> to populate the portfolio.
+  </p>
+  {%- endif -%}
+
+</article>
