@@ -37,6 +37,22 @@ layout: base
   <section class="portfolio-tracks" aria-label="Annotated album">
 
     {%- for track in tracks -%}
+    {%- comment -%}
+      Resolve the Cloudflare Stream UID from whatever the user pasted into
+      `stream_uid`. Accepts:
+        - bare UID:    f5712dfaedf5b59e380e98685b6a44b3
+        - manifest URL: https://customer-XXXX.cloudflarestream.com/<UID>/manifest/video.m3u8
+        - iframe URL:   https://customer-XXXX.cloudflarestream.com/<UID>/iframe
+        - generic URL:  https://iframe.videodelivery.net/<UID>
+      In every case, segment index 3 of a "/"-split URL holds the UID.
+    {%- endcomment -%}
+    {%- assign _stream_parts = track.stream_uid | split: '/' -%}
+    {%- if _stream_parts.size > 1 -%}
+      {%- assign _stream_uid = _stream_parts[3] -%}
+    {%- else -%}
+      {%- assign _stream_uid = track.stream_uid -%}
+    {%- endif -%}
+
     <article class="track" id="track-{{ track.number }}">
 
       <header class="track-header">
@@ -56,7 +72,7 @@ layout: base
       <div class="track-video">
         <div class="track-video-frame">
           <iframe
-            src="https://iframe.videodelivery.net/{{ track.stream_uid }}?poster=&autoplay=false"
+            src="https://iframe.videodelivery.net/{{ _stream_uid }}"
             loading="lazy"
             allow="accelerometer; gyroscope; encrypted-media; picture-in-picture;"
             allowfullscreen
