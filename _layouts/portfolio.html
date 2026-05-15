@@ -5,18 +5,50 @@ layout: base
 <article class="portfolio">
 
   <header class="portfolio-header">
-    <p class="portfolio-eyebrow">Annotated Portfolio<span aria-hidden="true"> — </span><span>AIMC 2026</span></p>
+    <p class="portfolio-eyebrow">Supplementary Material</p>
     <h1 class="portfolio-title">{{ page.title | escape }}</h1>
     {%- if page.subtitle and page.subtitle != "" %}
       <p class="portfolio-subtitle">{{ page.subtitle }}</p>
     {%- endif %}
-    {%- if content and content != "" %}
-      <div class="portfolio-intro">
-        {{ content }}
-      </div>
-    {%- endif %}
 
-    {%- if tracks and tracks.size > 0 -%}
+    <section class="portfolio-materials" aria-label="Supplementary materials">
+      <p class="portfolio-materials-label">Materials</p>
+      <ul class="portfolio-materials-list" role="list">
+        <li>
+          <a class="portfolio-material" href="{{ '/assets/pdf/AIMC26_73_Appendix.pdf' | relative_url }}" target="_blank" rel="noopener">
+            <span class="portfolio-material-name">Appendix</span>
+            <span class="portfolio-material-meta">
+              <span>PDF</span>
+              <svg class="portfolio-material-icon" viewBox="0 0 14 14" aria-hidden="true" focusable="false">
+                <path d="M7 1.5 V9.5 M3.5 6 L7 9.5 L10.5 6 M1.5 12.5 H12.5"
+                      fill="none" stroke="currentColor" stroke-width="1.25"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </a>
+        </li>
+        <li>
+          <span class="portfolio-material portfolio-material--upcoming" aria-disabled="true">
+            <span class="portfolio-material-name">Toolkit</span>
+            <span class="portfolio-material-meta">Available ahead of publication</span>
+          </span>
+        </li>
+      </ul>
+    </section>
+  </header>
+
+  {%- if tracks and tracks.size > 0 -%}
+  <section class="portfolio-section" aria-labelledby="annotated-portfolio">
+
+    <header class="portfolio-section-header">
+      <h2 class="portfolio-section-title" id="annotated-portfolio">Annotated Portfolio</h2>
+      {%- if content and content != "" -%}
+        <div class="portfolio-section-lead">
+          {{ content }}
+        </div>
+      {%- endif -%}
+    </header>
+
     <nav class="portfolio-toc" aria-label="Track index">
       <p class="portfolio-toc-label">Tracks</p>
       <ol class="portfolio-toc-list" role="list">
@@ -30,10 +62,7 @@ layout: base
         {%- endfor -%}
       </ol>
     </nav>
-    {%- endif -%}
-  </header>
 
-  {%- if tracks and tracks.size > 0 -%}
   <section class="portfolio-tracks" aria-label="Annotated album">
 
     {%- for track in tracks -%}
@@ -152,6 +181,8 @@ layout: base
     {%- endunless -%}
 
     {%- endfor -%}
+
+    </section>
 
   </section>
 

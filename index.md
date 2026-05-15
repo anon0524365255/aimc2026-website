@@ -1,7 +1,7 @@
 ---
 layout: portfolio
 title: "Rescuing Performance from the Demo: Co-Designing Drum Gesture Mappings with a Percussionist"
-subtitle: "Annotated portfolio — accompanying the AIMC 2026 submission"
+subtitle: ""
 permalink: /
 ---
 

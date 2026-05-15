@@ -107,7 +107,7 @@ a:hover, a:focus-visible {
 
 .portfolio-header {
   padding: 4rem 0 3rem;
-  border-bottom: 1px solid var(--rule);
+  //border-bottom: 1px solid var(--rule);
   margin-bottom: 4rem;
 }
 
@@ -151,10 +151,42 @@ a:hover, a:focus-visible {
   p:last-child { margin-bottom: 0; }
 }
 
+/* ---- Page-level section (e.g. "Annotated Portfolio") ---- */
+
+.portfolio-section {
+  margin-bottom: 0;
+}
+
+.portfolio-section-header {
+  margin-bottom: 2.5rem;
+}
+
+.portfolio-section-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.005em;
+  color: var(--fg);
+  margin: 0 0 1rem;
+  scroll-margin-top: 2rem;
+}
+
+.portfolio-section-lead {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--fg-muted);
+  max-width: 56ch;
+
+  p { margin: 0 0 0.9em; }
+  p:last-child { margin-bottom: 0; }
+}
+
 /* ---- Track index (TOC) ---- */
 
 .portfolio-toc {
-  margin-top: 3rem;
+  margin: 0 0 3rem;
 }
 
 .portfolio-toc-label {
@@ -211,6 +243,88 @@ a:hover, a:focus-visible {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* ---- Supplementary materials (header) ---- */
+
+.portfolio-materials {
+  margin-top: 3rem;
+}
+
+.portfolio-materials-label {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin: 0 0 1rem;
+}
+
+.portfolio-materials-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.portfolio-materials-list > li { margin: 0; }
+
+.portfolio-material {
+  display: grid;
+  grid-template-columns: minmax(8rem, 12rem) 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--rule);
+  color: var(--fg);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.portfolio-material:hover,
+.portfolio-material:focus-visible {
+  color: var(--accent);
+  outline: none;
+}
+
+.portfolio-material-name {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.portfolio-material-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.portfolio-material-icon {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+// Inactive row — the toolkit, until it's released.
+.portfolio-material--upcoming {
+  color: var(--fg-muted);
+  cursor: default;
+}
+
+.portfolio-material--upcoming .portfolio-material-meta {
+  color: var(--fg-muted);
+  text-transform: none;     // sentence case for the descriptive label
+  letter-spacing: 0.02em;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
 }
 
 /* ============================================================
