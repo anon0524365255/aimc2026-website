@@ -80,10 +80,26 @@ layout: base
         </div>
       </div>
 
-      {%- if track.reflection and track.reflection != "" or track.technical and track.technical != "" -%}
+      {%- comment -%}
+        Per-track flow data lives in _data/flows/track-N/{nodes,edges}.csv.
+        We look it up by computed key, and if both nodes and edges exist
+        the layout embeds the data as JSON for the renderer in flow.js.
+      {%- endcomment -%}
+      {%- assign _flow_key = 'track-' | append: track.number -%}
+      {%- assign _flow = site.data.flows[_flow_key] -%}
+      {%- assign _has_flow = false -%}
+      {%- if _flow and _flow.nodes and _flow.edges -%}{%- assign _has_flow = true -%}{%- endif -%}
+
+      {%- assign _has_reflection = false -%}
+      {%- if track.reflection and track.reflection != "" -%}{%- assign _has_reflection = true -%}{%- endif -%}
+
+      {%- assign _has_tech_text = false -%}
+      {%- if track.technical and track.technical != "" -%}{%- assign _has_tech_text = true -%}{%- endif -%}
+
+      {%- if _has_reflection or _has_tech_text or _has_flow -%}
       <div class="track-content">
 
-        {%- if track.reflection and track.reflection != "" -%}
+        {%- if _has_reflection -%}
         <details class="track-disclosure" open>
           <summary>
             <span class="track-disclosure-label">Reflection</span>
@@ -95,14 +111,21 @@ layout: base
         </details>
         {%- endif -%}
 
-        {%- if track.technical and track.technical != "" -%}
+        {%- if _has_tech_text or _has_flow -%}
         <details class="track-disclosure">
           <summary>
             <span class="track-disclosure-label">Technical details</span>
             <span class="track-disclosure-icon" aria-hidden="true"></span>
           </summary>
           <div class="track-disclosure-body">
-            {{ track.technical | markdownify }}
+            {%- if _has_flow -%}
+            <div class="track-flow" data-flow>
+              <script type="application/json" data-flow-data>{"nodes":{{ _flow.nodes | jsonify }},"edges":{{ _flow.edges | jsonify }}}</script>
+            </div>
+            {%- endif -%}
+            {%- if _has_tech_text -%}
+              {{ track.technical | markdownify }}
+            {%- endif -%}
           </div>
         </details>
         {%- endif -%}
